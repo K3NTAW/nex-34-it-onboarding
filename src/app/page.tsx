@@ -33,7 +33,7 @@ export default async function Home() {
   const externalLinks = [
     { id: 1, title: "MDN Web Docs", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
     { id: 2, title: "W3Schools JavaScript", url: "https://www.w3schools.com/js/" },
-    { id: 3, title: "JavaScript.info", url: "https://javascript.info/" },,
+    { id: 3, title: "JavaScript.info", url: "https://javascript.info/" }
   ];
 
   return (
