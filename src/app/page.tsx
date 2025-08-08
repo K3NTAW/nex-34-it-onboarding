@@ -1,103 +1,85 @@
-import Image from "next/image";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const courses = [
+    // Level 1
+    { id: 1, title: "Print Your Name", description: "🔰 Level 1: Super Simple", href: "/courses/print-your-name" },
+    { id: 2, title: "Simple Addition", description: "🔰 Level 1: Super Simple", href: "/courses/simple-addition" },
+    { id: 3, title: "Greet the User", description: "🔰 Level 1: Super Simple", href: "/courses/greet-the-user" },
+    { id: 4, title: "Even or Odd", description: "🔰 Level 1: Super Simple", href: "/courses/even-or-odd" },
+    // Level 2
+    { id: 5, title: "Age in 5 Years", description: "🧩 Level 2: Building Logic", href: "/courses/age-in-5-years" },
+    { id: 6, title: "Number Comparison", description: "🧩 Level 2: Building Logic", href: "/courses/number-comparison" },
+    { id: 7, title: "Simple Calculator", description: "🧩 Level 2: Building Logic", href: "/courses/simple-calculator" },
+    { id: 8, title: "Guess the Number", description: "🧩 Level 2: Building Logic", href: "/courses/guess-the-number" },
+    // Level 3
+    { id: 9, title: "Count to 10", description: "⚙️ Level 3: Using Loops and Conditions", href: "/courses/count-to-10" },
+    { id: 10, title: "Multiplication Table", description: "⚙️ Level 3: Using Loops and Conditions", href: "/courses/multiplication-table" },
+    { id: 11, title: "Sum of Numbers from 1 to N", description: "⚙️ Level 3: Using Loops and Conditions", href: "/courses/sum-of-numbers" },
+    { id: 12, title: "FizzBuzz (Mini Version)", description: "⚙️ Level 3: Using Loops and Conditions", href: "/courses/fizzbuzz" },
+    // Level 4
+    { id: 13, title: "Find the Maximum", description: "🧠 Level 4: Problem Solving", href: "/courses/find-the-maximum" },
+    { id: 14, title: "Reverse a Word", description: "🧠 Level 4: Problem Solving", href: "/courses/reverse-a-word" },
+    { id: 15, title: "Palindrome Checker", description: "🧠 Level 4: Problem Solving", href: "/courses/palindrome-checker" },
+  ];
+
+  const externalLinks = [
+    { id: 1, title: "MDN Web Docs", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+    { id: 2, title: "W3Schools JavaScript", url: "https://www.w3schools.com/js/" },
+    { id: 3, title: "JavaScript.info", url: "https://javascript.info/" },
+    { id: 4, title: "Eloquent JavaScript", url: "https://eloquentjavascript.net/" },
+    { id: 5, title: "You Don't Know JS", url: "https://github.com/getify/You-Dont-Know-JS" },
+    { id: 6, title: "JavaScript30", url: "https://javascript30.com/" },
+  ];
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex min-h-screen">
+      <main className="flex-1 p-8">
+        <h1 className="text-4xl font-bold mb-8">Courses</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {courses.map((course) => (
+            <Link href={course.href} key={course.id}>
+              <Card>
+                <CardHeader>
+                  <CardTitle>{course.title}</CardTitle>
+                  <CardDescription>
+                    {course.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Start learning now!
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <aside className="w-64 p-8 border-l">
+        <h2 className="text-2xl font-bold mb-4">Resources</h2>
+        <ul>
+          {externalLinks.map((link) => (
+            <li key={link.id} className="mb-2">
+              <a 
+                href={link.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline"
+              >
+                {link.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
     </div>
   );
 }
